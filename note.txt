@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>Do_Allocation</h1>
+    </div>
+
+    <div>
+        <form action="" id="form">
+            <input type="text" id="totalBuses" placeholder="Total Buses">
+            <input type="text" id="totalPassengers" placeholder="Total Passengers">
+            <input type="button" id="btn" value="Submit">
+        </form>
+
+    </div>
+    <div class="table">
+        <table>
+            <tr>
+                <th>Number of buses</th>
+                <th>Number of passengers</th>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+        let totalBuses = document.getElementById("totalBuses");
+        let totalPassengers = document.getElementById("totalPassengers");
+        console.log(document.getElementById("totalBuses").value)
+        const btn = document.getElementById("btn");
+        btn.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log(totalBuses.value);
+            console.log(totalPassengers.value);
+        })
+
+        const do_allocation = (no_of_passengers, no_of_buses) => {
+            let passengersCounter = [0, 1];
+            for (var i = 1; i <= no_of_buses; i++) {
+                let passenegersInBus;
+
+                if (i === 1) {
+                    passenegersInBus = 1;
+                } else if (i => 2) {
+
+                    passenegersInBus = passengersCounter[i - 2] + passengersCounter[i - 1];
+                    passengersCounter.push(passenegersInBus)
+                    no_of_passengers = no_of_passengers - passenegersInBus;
+
+                    if (no_of_passengers <= 0) {
+                        passenegersInBus = 0;
+                    }
+                }
+                console.log(i, passenegersInBus);
+            }
+        }
+
+        console.log(totalBuses.value);
+
+        do_allocation(totalPassengers, totalBuses);
+    </script>
+</body>
+
+</html>
